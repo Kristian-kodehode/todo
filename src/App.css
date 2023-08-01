@@ -9,15 +9,33 @@ html {
   font-family: "IBM Plex Mono", monospace;
 }
 body {
-  padding-top: 40px;
   display: flex;
   justify-content: center;
 }
+
+.navbar {
+  width: 100vw;
+  height: 80px;
+  padding: 16px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.language-icons {
+  display: flex;
+  gap: 8px;
+  font-size: 24px;
+}
+
 h1 {
   color: rgb(20, 130, 255);
 }
 .app-container {
+  border: 1px solid black;
+  margin: 0 auto;
   /* border: 1px solid black; */
+  padding-top: 80px;
   background-color: lightcyan;
   padding: 8px;
   min-width: 340px;
@@ -96,6 +114,6 @@ textarea {
 @media only screen and (min-width: 800px) {
   .app-container {
     padding: 16px;
-    min-width: 700px;
+    max-width: 800px;
   }
 }

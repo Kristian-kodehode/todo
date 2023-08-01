@@ -38,31 +38,42 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <h1>Notes in 50</h1>
-      <div className="input-container">
-        <input
-          className="input-text"
-          type="text"
-          maxLength="50"
-          value={newTask}
-          onChange={handleInputChange}
-          placeholder="Enter a new task, max 50 characters"
-        />
-        <input
-          className="button-submit"
-          onClick={handleSubmit}
-          type="submit"
-          value="+"
+    <div>
+      <nav className="navbar">
+        <div className="language-icons">
+          <i class="fa-brands fa-html5"></i>
+          <i class="fa-brands fa-css3-alt"></i>
+          <i class="fa-brands fa-square-js"></i>
+          <i class="fa-brands fa-react"></i>
+        </div>
+        <h5>my notes app</h5>
+      </nav>
+      <div className="app-container">
+        <h1>Notes in 50</h1>
+        <div className="input-container">
+          <input
+            className="input-text"
+            type="text"
+            maxLength="50"
+            value={newTask}
+            onChange={handleInputChange}
+            placeholder="Enter a new task, max 50 characters"
+          />
+          <input
+            className="button-submit"
+            onClick={handleSubmit}
+            type="submit"
+            value="+"
+          />
+        </div>
+
+        <TodoList
+          tasks={tasks}
+          handleDelete={handleDelete}
+          handleToggleStatus={handleToggleStatus}
+          taskStatus={taskStatus}
         />
       </div>
-
-      <TodoList
-        tasks={tasks}
-        handleDelete={handleDelete}
-        handleToggleStatus={handleToggleStatus}
-        taskStatus={taskStatus}
-      />
     </div>
   );
 }

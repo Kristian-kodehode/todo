@@ -47,7 +47,7 @@ function App() {
           maxLength="50"
           value={newTask}
           onChange={handleInputChange}
-          placeholder="Enter a new task, max 50 letters"
+          placeholder="Enter a new task, max 50 characters"
         />
         <input
           className="button-submit"

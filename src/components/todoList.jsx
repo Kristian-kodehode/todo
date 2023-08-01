@@ -5,7 +5,7 @@ const TodoList = ({ tasks, handleDelete, handleToggleStatus, taskStatus }) => {
     <div>
       {tasks.map((task, index) => (
         <div key={index} className="task-container">
-          <textarea className="task-text" id="" rows="4">
+          <textarea className="task-text" id="" maxLength="50">
             {task}
           </textarea>
           <button

@@ -39,14 +39,15 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Notes</h1>
+      <h1>Notes in 50</h1>
       <div className="input-container">
         <input
           className="input-text"
           type="text"
+          maxLength="50"
           value={newTask}
           onChange={handleInputChange}
-          placeholder="Enter a new task.."
+          placeholder="Enter a new task, max 50 letters"
         />
         <input
           className="button-submit"

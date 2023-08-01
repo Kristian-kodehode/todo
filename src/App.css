@@ -9,8 +9,8 @@ html {
   font-family: "IBM Plex Mono", monospace;
 }
 body {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .navbar {
@@ -33,9 +33,9 @@ h1 {
 }
 .app-container {
   border: 1px solid black;
-  margin: 0 auto;
+  margin: 60px auto;
   /* border: 1px solid black; */
-  padding-top: 80px;
+  /* padding-top: 80px; */
   background-color: lightcyan;
   padding: 8px;
   min-width: 340px;

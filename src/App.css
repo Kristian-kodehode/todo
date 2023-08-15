@@ -96,13 +96,16 @@ textarea {
   border: 2px solid white;
 }
 .button-submit {
-  background-color: rgb(20, 130, 255);
+  /* background-color: rgb(20, 130, 255); */
+  background-color: #8e44ad;
 }
 .button-edit {
+  /* background-color: coral; */
   background-color: coral;
 }
 .button-delete {
-  background-color: red;
+  /* background-color: red; */
+  background-color: #e74c3c;
 }
 .done {
   background-color: rgb(6, 145, 6);

@@ -6,12 +6,11 @@ function App() {
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [taskStatus, setTaskStatus] = useState([]);
+  const storedTasks = localStorage.getItem("tasks");
+  const storedTaskStatus = localStorage.getItem("taskStatus");
 
   useEffect(() => {
     try {
-      const storedTasks = localStorage.getItem("tasks");
-      const storedTaskStatus = localStorage.getItem("taskStatus");
-
       console.log("Retrieved tasks:", storedTasks);
       console.log("Retrieved taskStatus:", storedTaskStatus);
 

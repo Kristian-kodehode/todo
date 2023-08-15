@@ -1,13 +1,16 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const TodoList = ({ tasks, handleDelete, handleToggleStatus, taskStatus }) => {
   return (
     <div>
       {tasks.map((task, index) => (
         <div key={index} className="task-container">
-          <textarea className="task-text" id="" maxLength="50">
-            {task}
-          </textarea>
+          <textarea
+            className="task-text"
+            id=""
+            maxLength="50"
+            defaultValue={task}
+          ></textarea>
           <button
             className={`button-edit ${
               taskStatus[index] === "Done" ? "done" : ""

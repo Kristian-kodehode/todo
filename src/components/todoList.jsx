@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 
 const TodoList = ({ tasks, handleDelete, handleToggleStatus, taskStatus }) => {
   return (
@@ -20,7 +20,7 @@ const TodoList = ({ tasks, handleDelete, handleToggleStatus, taskStatus }) => {
             {taskStatus[index] === "Active" ? "Active" : "Done"}
           </button>
           <button className="button-delete" onClick={() => handleDelete(index)}>
-            Delete
+            <i className="fa-solid fa-trash-can"></i>
           </button>
         </div>
       ))}

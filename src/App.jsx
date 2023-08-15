@@ -41,15 +41,15 @@ function App() {
     <div>
       <nav className="navbar">
         <div className="language-icons">
-          <i class="fa-brands fa-html5"></i>
-          <i class="fa-brands fa-css3-alt"></i>
-          <i class="fa-brands fa-square-js"></i>
-          <i class="fa-brands fa-react"></i>
+          <i className="fa-brands fa-html5"></i>
+          <i className="fa-brands fa-css3-alt"></i>
+          <i className="fa-brands fa-square-js"></i>
+          <i className="fa-brands fa-react"></i>
         </div>
         <h5>my notes app</h5>
       </nav>
       <div className="app-container">
-        <h1>Remember this..</h1>
+        <h1>Add to memory..</h1>
         <div className="input-container">
           <input
             className="input-text"
@@ -59,6 +59,7 @@ function App() {
             onChange={handleInputChange}
             placeholder="max 50 characters..."
           />
+
           <input
             className="button-submit"
             onClick={handleSubmit}
@@ -66,6 +67,7 @@ function App() {
             value="+"
           />
         </div>
+        <h3>Memory..</h3>
 
         <TodoList
           tasks={tasks}

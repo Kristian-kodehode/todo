@@ -49,7 +49,7 @@ function App() {
         <h5>my notes app</h5>
       </nav>
       <div className="app-container">
-        <h1>Notes in 50</h1>
+        <h1>Remember this..</h1>
         <div className="input-container">
           <input
             className="input-text"
@@ -57,7 +57,7 @@ function App() {
             maxLength="50"
             value={newTask}
             onChange={handleInputChange}
-            placeholder="Enter a new task, max 50 characters"
+            placeholder="max 50 characters..."
           />
           <input
             className="button-submit"

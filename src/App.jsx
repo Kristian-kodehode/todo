@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import TodoList from "./components/todoList";
 
@@ -6,6 +6,23 @@ function App() {
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [taskStatus, setTaskStatus] = useState([]);
+
+  useEffect(() => {
+    try {
+      const storedTasks = localStorage.getItem("tasks");
+      const storedTaskStatus = localStorage.getItem("taskStatus");
+
+      console.log("Retrieved tasks:", storedTasks);
+      console.log("Retrieved taskStatus:", storedTaskStatus);
+
+      if (storedTasks && storedTaskStatus) {
+        setTasks(JSON.parse(storedTasks));
+        setTaskStatus(JSON.parse(storedTaskStatus));
+      }
+    } catch (error) {
+      console.error("Error retrieving data from local storage:", error);
+    }
+  }, []);
 
   const handleToggleStatus = (index) => {
     setTaskStatus((prevStatus) =>
@@ -28,14 +45,24 @@ function App() {
   };
 
   const handleDelete = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks.splice(index, 1);
-    setTasks(updatedTasks);
+    setTasks((prevTasks) => {
+      const updatedTasks = [...prevTasks];
+      updatedTasks.splice(index, 1);
+      return updatedTasks;
+    });
 
-    const updatedStatus = [...taskStatus];
-    updatedStatus.splice(index, 1);
-    setTaskStatus(updatedStatus);
+    setTaskStatus((prevStatus) => {
+      const updatedStatus = [...prevStatus];
+      updatedStatus.splice(index, 1);
+      return updatedStatus;
+    });
   };
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("taskStatus", JSON.stringify(taskStatus));
+  }, [tasks, taskStatus]);
+  // console.log(storedTaskStatus);
 
   return (
     <div>
@@ -44,7 +71,7 @@ function App() {
           <i className="fa-brands fa-html5"></i>
           <i className="fa-brands fa-css3-alt"></i>
           <i className="fa-brands fa-square-js"></i>
-          <i className="fa-brands fa-react"></i>
+          <i className="fa-brands fa-react fa-spin"></i>
         </div>
         <h5>my notes app</h5>
       </nav>

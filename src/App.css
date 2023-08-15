@@ -36,24 +36,26 @@ h1 {
   margin: 60px auto;
   /* border: 1px solid black; */
   /* padding-top: 80px; */
-  background-color: lightcyan;
+  /* background-color: lightcyan; */
   padding: 8px;
   min-width: 340px;
   box-shadow: 3px 3px 20px lightgray;
 }
 .input-text {
   height: 56px;
-  border: none;
-  background-color: rgb(199, 238, 251);
+  border: 1px solid lightblue;
+  background-color: rgb(245, 245, 245);
   width: 100%;
   padding-left: 8px;
+  margin-bottom: 1em;
 }
 .input-text:hover {
-  border: 2px solid white;
+  border: 1px solid #1482ff;
 }
 .input-container {
   display: flex;
   width: 100%;
+  height: 56px;
   /* border: 1px solid black; */
 }
 ::placeholder {
@@ -65,9 +67,9 @@ h1 {
   align-items: start;
   height: 56px;
   margin-top: 4px;
+  border: 1px solid green;
 }
 .task-container:hover {
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.117);
 }
 textarea {
   resize: none;
@@ -85,7 +87,8 @@ textarea {
 .button-edit,
 .button-delete {
   width: 56px;
-  height: 56px;
+  /* height: 56px; */
+  height: 100%;
   border: none;
   color: white;
   cursor: pointer;

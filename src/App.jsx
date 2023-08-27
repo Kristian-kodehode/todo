@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import TodoList from "./components/todoList";
 
 function App() {
   const [newTask, setNewTask] = useState("");
@@ -23,19 +22,34 @@ function App() {
     }
   }, []);
 
-  const handleToggleStatus = (index) => {
-    setTaskStatus((prevStatus) =>
-      prevStatus.map((status, i) =>
-        i === index ? (status === "Active" ? "Done" : "Active") : status
-      )
-    );
-  };
-
   const handleSubmit = () => {
     if (newTask.trim() !== "") {
-      setTasks([...tasks, newTask]);
+      const newTaskObject = {
+        id: Date.now(),
+        text: newTask,
+        status: "Active",
+      };
+      setTasks([...tasks, newTaskObject]);
       setTaskStatus([...taskStatus, "Active"]);
       setNewTask("");
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
+  const handleToggleStatus = (id) => {
+    const taskIndex = tasks.findIndex((task) => task.id === id);
+
+    if (taskIndex !== -1) {
+      setTaskStatus((prevStatus) =>
+        prevStatus.map((status, i) =>
+          i === taskIndex ? (status === "Active" ? "Done" : "Active") : status
+        )
+      );
     }
   };
 
@@ -43,25 +57,25 @@ function App() {
     setNewTask(event.target.value);
   };
 
-  const handleDelete = (index) => {
-    setTasks((prevTasks) => {
-      const updatedTasks = [...prevTasks];
-      updatedTasks.splice(index, 1);
-      return updatedTasks;
-    });
+  const handleTaskTextChange = (id, newText) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, text: newText } : task
+      )
+    );
+  };
 
-    setTaskStatus((prevStatus) => {
-      const updatedStatus = [...prevStatus];
-      updatedStatus.splice(index, 1);
-      return updatedStatus;
-    });
+  const handleDelete = (id) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    setTaskStatus((prevStatus) =>
+      prevStatus.filter((status, index) => tasks[index]?.id !== id)
+    );
   };
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
     localStorage.setItem("taskStatus", JSON.stringify(taskStatus));
   }, [tasks, taskStatus]);
-  // console.log(storedTaskStatus);
 
   return (
     <div>
@@ -83,6 +97,7 @@ function App() {
             maxLength="50"
             value={newTask}
             onChange={handleInputChange}
+            onKeyDown={handleKeyPress}
             placeholder="max 50 characters..."
           />
 
@@ -93,14 +108,44 @@ function App() {
             value="+"
           />
         </div>
-        <h3>Memory..</h3>
+        {tasks.length > 0 ? (
+          <h3>Memories active: {tasks.length}</h3>
+        ) : (
+          <h3>Memory empty..</h3>
+        )}
 
-        <TodoList
-          tasks={tasks}
-          handleDelete={handleDelete}
-          handleToggleStatus={handleToggleStatus}
-          taskStatus={taskStatus}
-        />
+        {tasks.map((task) => {
+          const taskIndex = tasks.findIndex((t) => t.id === task.id);
+          return (
+            <div key={task.id} className="task-container">
+              <textarea
+                className="task-text"
+                id=""
+                maxLength="50"
+                defaultValue={task.text}
+                onChange={(event) =>
+                  handleTaskTextChange(task.id, event.target.value)
+                }
+              ></textarea>
+              <button
+                className={`button-edit ${
+                  taskStatus[taskIndex] === "Done" ? "done" : ""
+                }`}
+                onClick={() => handleToggleStatus(task.id)}
+              >
+                {taskStatus[taskIndex] === "Active" ? "Active" : "Done"}
+              </button>
+              {taskStatus[taskIndex] === "Done" && (
+                <button
+                  className="button-delete"
+                  onClick={() => handleDelete(task.id)}
+                >
+                  <i className="fa-solid fa-trash-can"></i>
+                </button>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

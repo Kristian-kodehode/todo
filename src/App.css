@@ -9,11 +9,18 @@ html {
   font-family: "IBM Plex Mono", monospace;
 }
 
+input,
+textarea {
+  border-radius: 0;
+}
+input:focus {
+  border-radius: 0px;
+}
+
 .navbar {
   width: 100vw;
   height: 80px;
   padding: 16px;
-  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,14 +35,11 @@ h1 {
   color: rgb(20, 130, 255);
 }
 .app-container {
-  /* border: 1px solid black; */
   margin: 60px auto;
-  /* border: 1px solid black; */
-  /* padding-top: 80px; */
-  /* background-color: lightcyan; */
   padding: 8px;
   min-width: 340px;
-  box-shadow: 3px 3px 20px lightgray;
+
+  /* box-shadow: 3px 3px 20px lightgray; */
 }
 .input-text {
   height: 56px;
@@ -46,8 +50,10 @@ h1 {
   margin-bottom: 1em;
 }
 .input-text:hover {
-  border: 1px solid white;
+  /* border: 1px solid white; */
+  background-color: white;
 }
+
 .input-container {
   display: flex;
   width: 100%;
@@ -64,13 +70,7 @@ h1 {
   height: 56px;
   margin-top: 4px;
 }
-.task-container:hover {
-  /* border: 1px solid rgb(160, 160, 160); */
-}
 
-textarea {
-  resize: none;
-}
 .task-text {
   min-width: 200px;
   padding: 8px;
@@ -88,7 +88,6 @@ textarea {
 .button-edit,
 .button-delete {
   width: 56px;
-  /* height: 56px; */
   height: 100%;
   border: none;
   color: white;
@@ -106,12 +105,10 @@ textarea {
   color: white;
 }
 .button-edit {
-  /* border: 1px solid hsla(28, 88%, 58%, 0.6); */
   background-color: hsla(28, 88%, 58%, 0.2);
   color: #f28d35;
 }
 .button-delete {
-  /* border: 1px solid hsla(0, 96%, 48%, 0.6); */
   color: #f20505;
   background-color: hsla(0, 96%, 48%, 0.2);
 }
